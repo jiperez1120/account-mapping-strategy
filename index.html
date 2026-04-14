@@ -14,35 +14,34 @@
         .heatmap-cell:hover { transform: scale(1.05); filter: brightness(1.1); }
         .sidebar-link.active { background-color: #f1f5f9; border-left: 4px solid #2563eb; color: #1e40af; }
         .status-pill { font-size: 0.65rem; padding: 2px 8px; border-radius: 9999px; font-weight: 700; text-transform: uppercase; }
+        .intent-high { color: #dc2626; font-weight: 800; }
+        .intent-med { color: #ea580c; font-weight: 700; }
     </style>
 </head>
 <body class="flex h-screen overflow-hidden">
     <!-- Sidebar -->
     <aside class="w-64 bg-white border-r border-slate-200 flex flex-col hidden md:flex shadow-sm z-10">
         <div class="p-6 border-b border-slate-100">
-            <h1 class="font-bold text-xl text-slate-800 tracking-tight">Enterprise Portfolio</h1>
-            <p class="text-xs text-slate-500 uppercase font-semibold mt-1">Jorge Ignacio Pérez</p>
+            <h1 class="font-bold text-xl text-slate-800 tracking-tight">Portfolio</h1>
+            <p class="text-xs text-slate-500 uppercase font-semibold mt-1">Jorge Pérez González</p>
         </div>
         <nav class="flex-1 p-4 space-y-2 overflow-y-auto">
             <button onclick="switchTab('overview')" class="sidebar-link w-full flex items-center p-3 text-slate-600 rounded-lg hover:bg-slate-50 transition-colors active" id="btn-overview">
-                <i class="fas fa-chart-line w-6"></i> <span>Overview</span>
-            </button>
-            <button onclick="switchTab('sdr')" class="sidebar-link w-full flex items-center p-3 text-slate-600 rounded-lg hover:bg-slate-50 transition-colors" id="btn-sdr">
-                <i class="fas fa-user-plus w-6"></i> <span>SDR Opps</span>
+                <i class="fas fa-chart-line w-6"></i> <span>Sales Overview</span>
             </button>
             <button onclick="switchTab('mapping')" class="sidebar-link w-full flex items-center p-3 text-slate-600 rounded-lg hover:bg-slate-50 transition-colors" id="btn-mapping">
                 <i class="fas fa-map-marked-alt w-6"></i> <span>Account Mapping</span>
             </button>
             <button onclick="switchTab('qbr')" class="sidebar-link w-full flex items-center p-3 text-slate-600 rounded-lg hover:bg-slate-50 transition-colors" id="btn-qbr">
-                <i class="fas fa-calendar-check w-6"></i> <span>QBR Next Steps</span>
+                <i class="fas fa-calendar-check w-6"></i> <span>QBR Strategy</span>
             </button>
         </nav>
         <div class="p-4 border-t border-slate-100 bg-slate-50">
             <div class="bg-blue-600 p-4 rounded-xl text-white shadow-md">
-                <p class="text-xs text-blue-100 font-bold uppercase mb-1">Live CRM Sync</p>
+                <p class="text-xs text-blue-100 font-bold uppercase mb-1 italic">Intelligence Stack</p>
                 <div class="flex items-center">
                     <span class="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></span>
-                    <span class="text-sm font-medium">Salesforce Active</span>
+                    <span class="text-sm font-medium">6sense + SFDC Active</span>
                 </div>
             </div>
         </div>
@@ -55,7 +54,7 @@
             <h2 id="current-tab-title" class="font-bold text-slate-800 text-lg">Sales Overview</h2>
             <div class="flex items-center space-x-4">
                 <button onclick="syncData()" class="bg-slate-800 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-slate-700 transition-all flex items-center shadow-sm">
-                    <i class="fas fa-sync-alt mr-2" id="sync-icon"></i> Sync Data
+                    <i class="fas fa-sync-alt mr-2" id="sync-icon"></i> Refresh Intelligence
                 </button>
                 <div class="w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-full flex items-center justify-center text-white text-sm font-bold shadow-md">JI</div>
             </div>
@@ -66,90 +65,103 @@
             
             <!-- Tab: Overview -->
             <div id="tab-overview" class="tab-content space-y-8">
-                <!-- Top Metrics -->
+                <!-- Top Metrics Row -->
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm border-l-4 border-l-red-500">
+                        <div class="flex justify-between">
+                            <p class="text-slate-500 text-sm font-medium uppercase tracking-wider">6sense Buy Signals</p>
+                            <span class="bg-red-50 text-red-600 text-[10px] font-bold px-1.5 rounded">HOT</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-800 mt-1">14 Accounts</h3>
+                        <p class="text-xs text-slate-500 mt-2 font-medium">In "Purchase" or "Decision" stage</p>
+                    </div>
                     <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
                         <p class="text-slate-500 text-sm font-medium">Pipeline Value</p>
                         <h3 class="text-2xl font-bold text-slate-800 mt-1">$4.2M</h3>
                         <span class="text-xs text-green-600 font-bold mt-2 inline-flex items-center">
-                            <i class="fas fa-arrow-up mr-1"></i> +12% vs last month
+                            <i class="fas fa-arrow-up mr-1"></i> +12.4% MoM
                         </span>
                     </div>
-                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm border-l-4 border-l-indigo-500">
-                        <p class="text-slate-500 text-sm font-medium text-indigo-600 uppercase tracking-wider font-bold">ABM Engagement</p>
-                        <h3 class="text-2xl font-bold text-slate-800 mt-1">126 High-Fit</h3>
-                        <span class="text-xs text-slate-500 mt-2 block font-medium">Target Account Leads</span>
-                    </div>
                     <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
-                        <p class="text-slate-500 text-sm font-medium text-blue-600 font-bold">Quarterly Opps</p>
-                        <div class="mt-2 space-y-1">
-                            <div class="flex justify-between text-xs font-bold"><span class="text-green-600">Won: 12</span> <span class="text-slate-400">Lost: 4</span></div>
-                            <div class="flex justify-between text-xs font-bold"><span class="text-blue-600">Active: 28</span></div>
+                        <p class="text-slate-500 text-sm font-medium">Quarterly Wins</p>
+                        <h3 class="text-2xl font-bold text-slate-800 mt-1">12 Deals</h3>
+                        <div class="w-full bg-slate-100 h-1 rounded-full mt-3">
+                            <div class="bg-green-500 h-1 rounded-full" style="width: 75%"></div>
                         </div>
                     </div>
                     <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
-                        <p class="text-slate-500 text-sm font-medium text-orange-600 font-bold uppercase">Marketing Leads</p>
-                        <h3 class="text-2xl font-bold text-slate-800 mt-1">412</h3>
-                        <span class="text-xs text-orange-500 font-bold mt-2">MQL to SQL: 24%</span>
+                        <p class="text-slate-500 text-sm font-medium">Target Account Gap</p>
+                        <h3 class="text-2xl font-bold text-slate-800 mt-1">$840k</h3>
+                        <span class="text-xs text-blue-500 font-bold mt-2 italic">Based on Whitespace</span>
+                    </div>
+                </div>
+
+                <!-- Main Widgets Row -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- SDR Opportunities Table Widget -->
+                    <div class="lg:col-span-2 bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col">
+                        <div class="p-6 border-b border-slate-100 flex justify-between items-center bg-slate-50/50">
+                            <h4 class="font-bold text-slate-800 flex items-center">
+                                <i class="fas fa-bolt text-yellow-500 mr-2"></i> Active SDR Opportunities
+                            </h4>
+                            <span class="bg-blue-600 text-white px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-tighter">42 Active</span>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left border-collapse">
+                                <thead>
+                                    <tr class="bg-slate-50 text-slate-400 text-[10px] font-black uppercase tracking-widest">
+                                        <th class="p-4">Account / Deal</th>
+                                        <th class="p-4">Status</th>
+                                        <th class="p-4 text-center">Value</th>
+                                        <th class="p-4">Owner</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="sdr-table-body" class="text-xs">
+                                    <!-- Populated by JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- 6sense Intent Details Widget -->
+                    <div class="bg-white rounded-2xl border border-slate-200 shadow-sm flex flex-col overflow-hidden">
+                        <div class="p-6 border-b border-slate-100 bg-slate-50/50">
+                            <h4 class="font-bold text-slate-800 flex items-center">
+                                <i class="fas fa-satellite-dish text-red-500 mr-2"></i> ABM Intent Signal
+                            </h4>
+                        </div>
+                        <div class="p-6 space-y-6 flex-1 overflow-y-auto">
+                            <div class="space-y-4" id="intent-signals">
+                                <!-- Populated by JS -->
+                            </div>
+                        </div>
+                        <div class="p-4 bg-slate-50 border-t border-slate-100">
+                            <p class="text-[10px] text-slate-400 text-center font-bold uppercase tracking-widest">AI-Driven Sales Triggers</p>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Charts Row -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pb-8">
                     <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
-                        <div class="flex justify-between items-center mb-6">
-                            <h4 class="font-bold text-slate-800">Revenue Forecast vs Quota</h4>
-                            <span class="text-xs bg-blue-50 text-blue-600 px-2 py-1 rounded-md font-bold italic">Real-time Data</span>
-                        </div>
-                        <canvas id="forecastChart" height="220"></canvas>
+                        <h4 class="font-bold text-slate-800 mb-6">Revenue Performance vs Quota</h4>
+                        <canvas id="forecastChart" height="200"></canvas>
                     </div>
                     <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
-                        <h4 class="font-bold text-slate-800 mb-6">Pipeline stage distribution</h4>
-                        <canvas id="pipelineChart" height="220"></canvas>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Tab: SDR Opps -->
-            <div id="tab-sdr" class="tab-content hidden space-y-6">
-                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
-                    <div class="p-6 border-b border-slate-100 flex justify-between items-center">
-                        <h4 class="font-bold text-slate-800">Inbound & Outbound Opportunities</h4>
-                        <div class="flex space-x-2">
-                            <span class="bg-slate-100 text-slate-600 px-3 py-1 rounded-lg text-xs font-bold">Total: 42</span>
-                        </div>
-                    </div>
-                    <div class="overflow-x-auto">
-                        <table class="w-full text-left border-collapse">
-                            <thead>
-                                <tr class="bg-slate-50 text-slate-500 text-xs font-bold uppercase tracking-wider">
-                                    <th class="p-4">Account / Opportunity</th>
-                                    <th class="p-4">Source</th>
-                                    <th class="p-4">Status</th>
-                                    <th class="p-4 text-center">Value</th>
-                                    <th class="p-4">Owner</th>
-                                </tr>
-                            </thead>
-                            <tbody id="sdr-table-body" class="text-sm">
-                                <!-- Populated by JS -->
-                            </tbody>
-                        </table>
+                        <h4 class="font-bold text-slate-800 mb-6">Opportunities by Stage</h4>
+                        <canvas id="pipelineChart" height="200"></canvas>
                     </div>
                 </div>
             </div>
 
             <!-- Tab: Account Mapping -->
             <div id="tab-mapping" class="tab-content hidden space-y-6">
-                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm overflow-x-auto">
-                    <div class="flex justify-between items-center mb-6">
+                <!-- Keep existing mapping code -->
+                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm overflow-x-auto">
+                    <div class="flex justify-between items-center mb-8">
                         <div>
-                            <h4 class="font-bold text-slate-800 text-lg">Account Whitespace Analysis</h4>
-                            <p class="text-slate-500 text-sm">Identifying cross-sell and up-sell opportunities across products</p>
-                        </div>
-                        <div class="flex space-x-3 text-xs">
-                            <div class="flex items-center"><span class="w-3 h-3 bg-green-500 rounded-sm mr-1"></span> Active</div>
-                            <div class="flex items-center"><span class="w-3 h-3 bg-slate-100 rounded-sm mr-1 border border-slate-300"></span> Whitespace</div>
-                            <div class="flex items-center"><span class="w-3 h-3 bg-orange-400 rounded-sm mr-1"></span> In Progress</div>
+                            <h4 class="font-bold text-slate-800 text-xl">Account Whitespace Analysis</h4>
+                            <p class="text-slate-500 text-sm mt-1">Product penetration heatmap across top 6 enterprise accounts</p>
                         </div>
                     </div>
                     <table class="w-full text-left border-collapse">
@@ -163,30 +175,32 @@
                                 <th class="p-4 border border-slate-200 text-slate-600 text-xs font-bold uppercase text-center">Support Plan</th>
                             </tr>
                         </thead>
-                        <tbody id="mapping-body">
-                            <!-- Populated by JS -->
-                        </tbody>
+                        <tbody id="mapping-body"></tbody>
                     </table>
                 </div>
             </div>
 
             <!-- Tab: QBR -->
             <div id="tab-qbr" class="tab-content hidden space-y-6">
-                <div class="grid grid-cols-1 gap-6" id="qbr-list">
-                    <!-- Populated by JS -->
-                </div>
+                <div class="grid grid-cols-1 gap-6" id="qbr-list"></div>
             </div>
         </div>
     </main>
 
     <script>
         const sdrOpps = [
-            { name: "Global Finance Corp", opp: "Nexus AI Expansion", source: "Outbound", status: "Negotiation", value: "$450k", owner: "SDR-Alpha" },
-            { name: "TechNova Systems", opp: "Enterprise Suite Pilot", source: "Inbound", status: "Demo", value: "$120k", owner: "SDR-Gamma" },
-            { name: "HealthDirect Inc", opp: "Compliance Layer", source: "Marketing", status: "Meeting Scheduled", value: "$85k", owner: "SDR-Beta" },
-            { name: "RetailFlow Global", opp: "Platform Renewal", source: "Outbound", status: "Redline", value: "$310k", owner: "AE-Jorge" },
-            { name: "Stellar Automotive", opp: "Analytics Add-on", source: "Inbound", status: "Closed Won", value: "$95k", owner: "SDR-Alpha" },
-            { name: "EuroMedia Group", opp: "Initial Discovery", source: "Marketing", status: "Demo", value: "$60k", owner: "SDR-Beta" }
+            { name: "Global Finance Corp", opp: "Expansion Deal", status: "Negotiation", value: "$450k", owner: "Jorge P." },
+            { name: "TechNova Systems", opp: "SaaS Pilot", status: "Demo", value: "$120k", owner: "SDR-Alpha" },
+            { name: "HealthDirect Inc", opp: "Cybersecurity Mod", status: "Meeting Scheduled", value: "$85k", owner: "SDR-Beta" },
+            { name: "RetailFlow Global", opp: "Platform Renewal", status: "Redline", value: "$310k", owner: "Jorge P." },
+            { name: "Stellar Automotive", opp: "Big Data Add-on", status: "Closed Won", value: "$95k", owner: "Jorge P." }
+        ];
+
+        const intentData = [
+            { account: "Global Finance Corp", score: 98, level: "Purchase", keyword: "Consolidation strategy", signals: 24 },
+            { account: "TechNova Systems", score: 82, level: "Decision", keyword: "API Security", signals: 15 },
+            { account: "HealthDirect Inc", score: 45, level: "Consideration", keyword: "GDPR compliance", signals: 4 },
+            { account: "EuroMedia Group", score: 91, level: "Purchase", keyword: "Cloud migration", signals: 18 }
         ];
 
         const accounts = [
@@ -199,13 +213,13 @@
         ];
 
         const qbrData = [
-            { account: "Global Finance Corp", date: "April 02, 2026", status: "Critical", steps: ["Establish C-Level alignment for Nexus AI expansion", "Finalize POC success criteria for Analytics layer", "Review 2027 contract consolidation strategy"] },
-            { account: "TechNova Systems", date: "March 28, 2026", status: "On Track", steps: ["Renew core subscription for 36 months", "Upsell 500 licenses of Nexus AI by Q3", "Schedule technical health check with CSM"] },
-            { account: "Stellar Automotive", date: "April 10, 2026", status: "Needs Attention", steps: ["Resolve open support tickets regarding API latency", "Plan onsite Executive Business Review in June"] }
+            { account: "Global Finance Corp", date: "April 02, 2026", status: "Critical", steps: ["Establish C-Level alignment for Nexus AI expansion", "Finalize POC success criteria", "Review 2027 strategy"] },
+            { account: "TechNova Systems", date: "March 28, 2026", status: "On Track", steps: ["Renew core subscription", "Upsell 500 licenses of Nexus AI", "Schedule health check"] }
         ];
 
         function init() {
             renderSDR();
+            renderIntent();
             renderMapping();
             renderCharts();
             renderQBR();
@@ -221,51 +235,67 @@
                 'Closed Won': 'bg-green-100 text-green-700'
             };
             body.innerHTML = sdrOpps.map(o => `
-                <tr class="hover:bg-slate-50 transition-colors border-b border-slate-100">
+                <tr class="hover:bg-slate-50 border-b border-slate-100 last:border-0">
                     <td class="p-4">
                         <div class="font-bold text-slate-800">${o.name}</div>
-                        <div class="text-xs text-slate-400">${o.opp}</div>
+                        <div class="text-[10px] text-slate-400 font-medium">${o.opp}</div>
                     </td>
-                    <td class="p-4 text-xs font-semibold text-slate-600">${o.source}</td>
-                    <td class="p-4"><span class="status-pill ${statusColors[o.status] || 'bg-slate-100 text-slate-600'}">${o.status}</span></td>
+                    <td class="p-4"><span class="status-pill ${statusColors[o.status]}">${o.status}</span></td>
                     <td class="p-4 text-center font-bold text-slate-700">${o.value}</td>
-                    <td class="p-4 text-xs text-slate-500 font-medium">${o.owner}</td>
+                    <td class="p-4 text-slate-500 font-semibold">${o.owner}</td>
                 </tr>
+            `).join('');
+        }
+
+        function renderIntent() {
+            const container = document.getElementById('intent-signals');
+            container.innerHTML = intentData.map(i => `
+                <div class="flex flex-col space-y-2 p-3 rounded-xl border border-slate-100 hover:bg-slate-50 transition-all cursor-pointer">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-bold text-slate-700">${i.account}</span>
+                        <span class="text-[10px] px-1.5 py-0.5 rounded-full font-black ${i.score > 90 ? 'bg-red-100 text-red-600' : 'bg-orange-100 text-orange-600'}">${i.score}</span>
+                    </div>
+                    <div class="flex items-center text-[10px] text-slate-400 space-x-3">
+                        <span class="flex items-center"><i class="fas fa-eye mr-1"></i> ${i.signals} Signals</span>
+                        <span class="flex items-center font-bold text-slate-500 uppercase">${i.level}</span>
+                    </div>
+                    <div class="bg-slate-100 p-1.5 rounded-md text-[9px] font-medium text-slate-600 italic">
+                        "Researching: ${i.keyword}"
+                    </div>
+                </div>
             `).join('');
         }
 
         function renderMapping() {
             const body = document.getElementById('mapping-body');
             body.innerHTML = accounts.map(acc => `
-                <tr class="hover:bg-slate-50 transition-colors">
-                    <td class="p-4 border border-slate-200 font-bold text-slate-700">${acc.name}</td>
+                <tr class="hover:bg-slate-50 border-b border-slate-100 last:border-0">
+                    <td class="p-4 font-bold text-slate-700">${acc.name}</td>
                     ${acc.tiers.map(tier => {
                         let colorClass = tier === 1 ? 'bg-green-500' : (tier === 2 ? 'bg-orange-400 animate-pulse' : 'bg-slate-100 border-slate-200');
-                        return `<td class="p-4 border border-slate-200 text-center"><div class="w-8 h-8 mx-auto rounded-md heatmap-cell ${colorClass}"></div></td>`;
+                        return `<td class="p-4 border-l border-slate-100 text-center"><div class="w-6 h-6 mx-auto rounded-md heatmap-cell ${colorClass}"></div></td>`;
                     }).join('')}
                 </tr>
             `).join('');
         }
 
         function renderCharts() {
-            const ctx1 = document.getElementById('forecastChart').getContext('2d');
-            new Chart(ctx1, {
+            new Chart(document.getElementById('forecastChart'), {
                 type: 'line',
                 data: {
                     labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
                     datasets: [
-                        { label: 'Forecast', data: [1.2, 1.8, 2.5, 3.1, 3.8, 4.2], borderColor: '#2563eb', backgroundColor: 'rgba(37, 99, 235, 0.1)', fill: true, tension: 0.4, borderWidth: 3 },
-                        { label: 'Quota', data: [1, 2, 3, 3, 4, 4], borderColor: '#94a3b8', borderDash: [5, 5], tension: 0, borderWidth: 2 }
+                        { label: 'Actual', data: [1.2, 1.8, 2.5, 3.1, 3.8, 4.2], borderColor: '#2563eb', backgroundColor: 'rgba(37, 99, 235, 0.1)', fill: true, tension: 0.4, borderWidth: 3 },
+                        { label: 'Target', data: [1, 2, 3, 3.5, 4, 4.5], borderColor: '#94a3b8', borderDash: [5, 5], tension: 0, borderWidth: 2 }
                     ]
                 },
-                options: { responsive: true, plugins: { legend: { position: 'bottom' } }, scales: { y: { beginAtZero: true } } }
+                options: { responsive: true, plugins: { legend: { display: false } } }
             });
 
-            const ctx2 = document.getElementById('pipelineChart').getContext('2d');
-            new Chart(ctx2, {
+            new Chart(document.getElementById('pipelineChart'), {
                 type: 'bar',
                 data: {
-                    labels: ['Meeting Scheduled', 'Demo', 'Negotiation', 'Redline', 'Closed Won'],
+                    labels: ['SDR Lead', 'Demo', 'Negotiation', 'Redline', 'Closed Won'],
                     datasets: [{ data: [12, 18, 14, 8, 22], backgroundColor: ['#94a3b8', '#6366f1', '#f59e0b', '#a855f7', '#10b981'] }]
                 },
                 options: { responsive: true, plugins: { legend: { display: false } }, indexAxis: 'y' }
@@ -278,17 +308,14 @@
                 <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
                     <div class="flex justify-between items-start mb-6">
                         <div>
-                            <span class="text-xs font-bold px-2 py-1 rounded uppercase ${q.status === 'Critical' ? 'bg-red-100 text-red-600' : 'bg-green-100 text-green-600'}">${q.status}</span>
+                            <span class="text-[10px] font-black px-2 py-1 rounded uppercase tracking-tighter ${q.status === 'Critical' ? 'bg-red-100 text-red-600' : 'bg-green-100 text-green-600'}">${q.status}</span>
                             <h4 class="text-xl font-bold text-slate-800 mt-2">${q.account}</h4>
-                            <p class="text-slate-500 text-sm">Last QBR Date: ${q.date}</p>
+                            <p class="text-slate-500 text-xs mt-1">Last Review: ${q.date}</p>
                         </div>
                     </div>
-                    <div class="space-y-4">
-                        <h5 class="text-xs font-bold text-slate-400 uppercase tracking-widest">Next Strategic Steps</h5>
-                        <ul class="space-y-3">
-                            ${q.steps.map(step => `<li class="flex items-center text-slate-700 text-sm"><i class="fas fa-chevron-right text-blue-500 mr-3 text-xs"></i> ${step}</li>`).join('')}
-                        </ul>
-                    </div>
+                    <ul class="space-y-3">
+                        ${q.steps.map(step => `<li class="flex items-center text-slate-700 text-sm font-medium"><i class="fas fa-check-circle text-blue-500 mr-3 text-xs"></i> ${step}</li>`).join('')}
+                    </ul>
                 </div>
             `).join('');
         }
@@ -301,7 +328,6 @@
             
             const titles = {
                 'overview': 'Sales Overview',
-                'sdr': 'SDR Opportunities & Pipeline',
                 'mapping': 'Strategic Account Mapping',
                 'qbr': 'Quarterly Business Reviews'
             };
@@ -313,8 +339,8 @@
             icon.classList.add('animate-spin');
             setTimeout(() => {
                 icon.classList.remove('animate-spin');
-                alert('Success: Synced with Salesforce (Opps), Outreach (SDR activity), and Gong (Meetings)!');
-            }, 1500);
+                alert('Intelligence Updated: 6sense Intent Signals & Salesforce Pipeline Refreshed!');
+            }, 1200);
         }
 
         window.onload = init;
