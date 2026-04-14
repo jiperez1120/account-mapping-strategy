@@ -17,6 +17,7 @@
         .intent-high { color: #dc2626; font-weight: 800; }
         .intent-med { color: #ea580c; font-weight: 700; }
         .badge-6sense { background: #000; color: #fff; font-size: 0.6rem; padding: 1px 5px; border-radius: 4px; font-weight: 900; }
+        .badge-tool { background: #e2e8f0; color: #475569; font-size: 0.6rem; padding: 1px 5px; border-radius: 4px; font-weight: 700; }
     </style>
 </head>
 <body class="flex h-screen overflow-hidden">
@@ -40,9 +41,9 @@
         <div class="p-4 border-t border-slate-100 bg-slate-50">
             <div class="bg-blue-600 p-4 rounded-xl text-white shadow-md">
                 <p class="text-xs text-blue-100 font-bold uppercase mb-1 italic">Data Stack</p>
-                <div class="flex items-center">
+                <div class="flex items-center space-x-2">
                     <span class="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></span>
-                    <span class="text-sm font-medium">6sense + SFDC Active</span>
+                    <span class="text-sm font-medium">SFDC + 6sense + ZoomInfo</span>
                 </div>
             </div>
         </div>
@@ -66,28 +67,21 @@
             
             <!-- Tab: Overview -->
             <div id="tab-overview" class="tab-content space-y-8">
-                <!-- Top Metrics Row -->
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-6 text-center">
                     <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm border-l-4 border-l-red-500">
-                        <div class="flex justify-center mb-1">
-                            <span class="badge-6sense">6SENSE INTENT</span>
-                        </div>
+                        <div class="flex justify-center mb-1"><span class="badge-6sense">6SENSE INTENT</span></div>
                         <h3 class="text-2xl font-bold text-slate-800">14 Accounts</h3>
                         <p class="text-[10px] text-red-600 font-bold mt-1 uppercase">Stage: Decision/Purchase</p>
                     </div>
                     <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
                         <p class="text-slate-500 text-xs font-bold uppercase tracking-widest">Pipeline Value</p>
                         <h3 class="text-2xl font-bold text-slate-800 mt-1">$4.2M</h3>
-                        <span class="text-xs text-green-600 font-bold mt-2 inline-flex items-center">
-                            <i class="fas fa-arrow-up mr-1"></i> +12% MoM
-                        </span>
+                        <span class="text-xs text-green-600 font-bold mt-2 inline-flex items-center"><i class="fas fa-arrow-up mr-1"></i> +12% MoM</span>
                     </div>
                     <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
                         <p class="text-slate-500 text-xs font-bold uppercase tracking-widest">Q Wins</p>
                         <h3 class="text-2xl font-bold text-slate-800 mt-1">12 Deals</h3>
-                        <div class="w-full bg-slate-100 h-1.5 rounded-full mt-3 overflow-hidden">
-                            <div class="bg-green-500 h-full" style="width: 75%"></div>
-                        </div>
+                        <div class="w-full bg-slate-100 h-1.5 rounded-full mt-3 overflow-hidden"><div class="bg-green-500 h-full" style="width: 75%"></div></div>
                     </div>
                     <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
                         <p class="text-slate-500 text-xs font-bold uppercase tracking-widest">Expansion Gap</p>
@@ -96,17 +90,11 @@
                     </div>
                 </div>
 
-                <!-- Main Widgets Row -->
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-                    <!-- SDR Opportunities Widget (Main) -->
                     <div class="lg:col-span-8 bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col">
                         <div class="p-6 border-b border-slate-100 flex justify-between items-center bg-white">
-                            <h4 class="font-bold text-slate-800 flex items-center">
-                                <i class="fas fa-bolt text-yellow-500 mr-2"></i> SDR Opportunities & Pipeline
-                            </h4>
-                            <div class="flex space-x-2">
-                                <span class="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-[10px] font-black uppercase">42 In-Flight</span>
-                            </div>
+                            <h4 class="font-bold text-slate-800 flex items-center"><i class="fas fa-bolt text-yellow-500 mr-2"></i> SDR Opportunities & Pipeline</h4>
+                            <span class="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-[10px] font-black uppercase">42 In-Flight</span>
                         </div>
                         <div class="overflow-x-auto">
                             <table class="w-full text-left border-collapse">
@@ -114,35 +102,22 @@
                                     <tr class="bg-slate-50 text-slate-400 text-[10px] font-black uppercase tracking-widest border-b border-slate-100">
                                         <th class="p-4">Account / Opportunity</th>
                                         <th class="p-4">Stage</th>
-                                        <th class="p-4 text-center">Contract Value</th>
-                                        <th class="p-4">AE Owner</th>
+                                        <th class="p-4 text-center">Value</th>
+                                        <th class="p-4">Owner</th>
                                     </tr>
                                 </thead>
-                                <tbody id="sdr-table-body" class="text-xs font-medium">
-                                    <!-- Populated by JS -->
-                                </tbody>
+                                <tbody id="sdr-table-body" class="text-xs font-medium"></tbody>
                             </table>
                         </div>
                     </div>
-
-                    <!-- 6sense Intent Details Widget -->
                     <div class="lg:col-span-4 bg-white rounded-2xl border border-slate-200 shadow-sm flex flex-col overflow-hidden">
                         <div class="p-6 border-b border-slate-100 bg-white">
-                            <h4 class="font-bold text-slate-800 flex items-center">
-                                <i class="fas fa-satellite-dish text-red-500 mr-2"></i> 6sense Buying Signals
-                            </h4>
+                            <h4 class="font-bold text-slate-800 flex items-center"><i class="fas fa-satellite-dish text-red-500 mr-2"></i> 6sense Buying Signals</h4>
                         </div>
-                        <div class="p-6 space-y-4 flex-1 overflow-y-auto" id="intent-signals">
-                            <!-- Populated by JS -->
-                        </div>
-                        <div class="p-4 bg-slate-50 border-t border-slate-100 flex justify-between items-center">
-                            <span class="text-[9px] text-slate-400 font-bold uppercase tracking-widest">Powered by AI Analytics</span>
-                            <i class="fas fa-info-circle text-slate-300"></i>
-                        </div>
+                        <div class="p-6 space-y-4 flex-1 overflow-y-auto" id="intent-signals"></div>
                     </div>
                 </div>
 
-                <!-- Performance Row -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pb-8">
                     <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
                         <div class="flex justify-between items-center mb-6">
@@ -152,26 +127,56 @@
                         <canvas id="forecastChart" height="200"></canvas>
                     </div>
                     <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
-                        <h4 class="font-bold text-slate-800 mb-6">SDR Pipeline Distribution</h4>
+                        <h4 class="font-bold text-slate-800 mb-6">Pipeline Distribution</h4>
                         <canvas id="pipelineChart" height="200"></canvas>
                     </div>
                 </div>
             </div>
 
             <!-- Tab: Account Mapping -->
-            <div id="tab-mapping" class="tab-content hidden space-y-6">
+            <div id="tab-mapping" class="tab-content hidden space-y-8">
+                <!-- Mapping Dashboards -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                        <h4 class="font-bold text-slate-800 text-sm mb-4">Tier Distribution</h4>
+                        <canvas id="tierChart" height="150"></canvas>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                        <h4 class="font-bold text-slate-800 text-sm mb-4">Whitespace by Product</h4>
+                        <canvas id="whitespaceChart" height="150"></canvas>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                        <h4 class="font-bold text-slate-800 text-sm mb-4">Engagement Scoring</h4>
+                        <div class="space-y-4 mt-2">
+                            <div class="flex justify-between items-center"><span class="text-xs text-slate-600">High Engagement</span><span class="text-xs font-bold text-green-600">42%</span></div>
+                            <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden"><div class="bg-green-500 h-full" style="width: 42%"></div></div>
+                            <div class="flex justify-between items-center"><span class="text-xs text-slate-600">Decision Maker Match</span><span class="text-xs font-bold text-blue-600">68%</span></div>
+                            <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden"><div class="bg-blue-500 h-full" style="width: 68%"></div></div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm overflow-x-auto">
-                    <h4 class="font-bold text-slate-800 text-xl mb-2">Account Whitespace Analysis</h4>
-                    <p class="text-slate-500 text-sm mb-8">Heatmap of product penetration and strategic cross-sell gaps.</p>
+                    <div class="flex justify-between items-end mb-8">
+                        <div>
+                            <h4 class="font-bold text-slate-800 text-xl mb-2">Strategic Whitespace Analysis</h4>
+                            <p class="text-slate-500 text-sm">Targeting cross-sell gaps across the enterprise portfolio.</p>
+                        </div>
+                        <div class="flex space-x-2">
+                            <span class="badge-tool">Outreach</span>
+                            <span class="badge-tool">Gong</span>
+                            <span class="badge-tool">Salesforce</span>
+                        </div>
+                    </div>
                     <table class="w-full text-left border-collapse">
                         <thead>
                             <tr class="bg-slate-50">
                                 <th class="p-4 border border-slate-200 text-slate-600 text-xs font-bold uppercase tracking-widest">Account Name</th>
-                                <th class="p-4 border border-slate-200 text-slate-600 text-xs font-bold uppercase text-center">Platform</th>
-                                <th class="p-4 border border-slate-200 text-slate-600 text-xs font-bold uppercase text-center">Nexus AI</th>
-                                <th class="p-4 border border-slate-200 text-slate-600 text-xs font-bold uppercase text-center">Analytics</th>
+                                <th class="p-4 border border-slate-200 text-slate-600 text-xs font-bold uppercase text-center">Core</th>
+                                <th class="p-4 border border-slate-200 text-slate-600 text-xs font-bold uppercase text-center">AI Mod</th>
+                                <th class="p-4 border border-slate-200 text-slate-600 text-xs font-bold uppercase text-center">Advanced Analytics</th>
                                 <th class="p-4 border border-slate-200 text-slate-600 text-xs font-bold uppercase text-center">Compliance</th>
-                                <th class="p-4 border border-slate-200 text-slate-600 text-xs font-bold uppercase text-center">Support</th>
+                                <th class="p-4 border border-slate-200 text-slate-600 text-xs font-bold uppercase text-center">Premium Support</th>
                             </tr>
                         </thead>
                         <tbody id="mapping-body"></tbody>
@@ -181,7 +186,7 @@
 
             <!-- Tab: QBR -->
             <div id="tab-qbr" class="tab-content hidden space-y-6">
-                <div class="grid grid-cols-1 gap-6" id="qbr-list"></div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="qbr-list"></div>
             </div>
         </div>
     </main>
@@ -190,18 +195,16 @@
         const sdrOpps = [
             { name: "Global Finance Corp", opp: "Nexus AI Expansion", status: "Negotiation", value: "$450k", owner: "Jorge P." },
             { name: "TechNova Systems", opp: "SaaS Pilot (Enterprise)", status: "Demo", value: "$120k", owner: "AE-Alpha" },
-            { name: "HealthDirect Inc", opp: "Compliance Mod", status: "Meeting Scheduled", value: "$85k", owner: "AE-Beta" },
+            { name: "HealthDirect Inc", opp: "Compliance Module", status: "Meeting Scheduled", value: "$85k", owner: "AE-Beta" },
             { name: "RetailFlow Global", opp: "Annual Renewal", status: "Redline", value: "$310k", owner: "Jorge P." },
             { name: "Stellar Automotive", opp: "Data Analytics Suite", status: "Closed Won", value: "$95k", owner: "Jorge P." }
         ];
-
         const intentSignals = [
             { account: "Global Finance Corp", score: 98, stage: "Purchase", topics: "Consolidation, Competitor Swap", profile: "High-Fit" },
             { account: "TechNova Systems", score: 84, stage: "Decision", topics: "API Security, Enterprise Pricing", profile: "High-Fit" },
             { account: "EuroMedia Group", score: 91, stage: "Purchase", topics: "Cloud Migration, AI Automation", profile: "Tier-1" },
             { account: "Stellar Automotive", score: 72, stage: "Consideration", topics: "Analytics Integration", profile: "Tier-2" }
         ];
-
         const accounts = [
             { name: "Global Finance Corp", tiers: [1, 1, 2, 0, 1] },
             { name: "TechNova Systems", tiers: [1, 2, 0, 0, 1] },
@@ -210,10 +213,10 @@
             { name: "EuroMedia Group", tiers: [1, 0, 2, 0, 0] },
             { name: "Stellar Automotive", tiers: [1, 1, 0, 2, 1] }
         ];
-
         const qbrData = [
             { account: "Global Finance Corp", date: "April 02, 2026", status: "Critical", steps: ["Align C-Level on AI expansion", "Finalize POC success metrics", "Contract Review"] },
-            { account: "TechNova Systems", date: "March 28, 2026", status: "On Track", steps: ["Renew core sub", "Upsell Nexus AI seats", "CSM Sync"] }
+            { account: "TechNova Systems", date: "March 28, 2026", status: "On Track", steps: ["Renew core subscription", "Upsell Nexus AI seats", "CSM Sync"] },
+            { account: "HealthDirect Inc", date: "May 12, 2026", status: "On Track", steps: ["Security review", "Integration phase 2", "Compliance audit"] }
         ];
 
         function init() {
@@ -259,7 +262,7 @@
                         <span class="text-indigo-600 uppercase">● ${i.profile}</span>
                     </div>
                     <div class="bg-slate-50 p-2 rounded-lg text-[10px] text-slate-600 font-medium">
-                        <span class="text-slate-400 font-bold uppercase mr-1">Intent Topics:</span> ${i.topics}
+                        <span class="text-slate-400 font-bold uppercase mr-1">Intent:</span> ${i.topics}
                     </div>
                 </div>
             `).join('');
@@ -279,6 +282,7 @@
         }
 
         function renderCharts() {
+            // Revenue Line Chart
             new Chart(document.getElementById('forecastChart'), {
                 type: 'line',
                 data: {
@@ -291,6 +295,7 @@
                 options: { responsive: true, plugins: { legend: { display: false } }, scales: { y: { display: false } } }
             });
 
+            // Pipeline Bar Chart
             new Chart(document.getElementById('pipelineChart'), {
                 type: 'bar',
                 data: {
@@ -298,6 +303,35 @@
                     datasets: [{ data: [12, 18, 14, 8, 22], backgroundColor: ['#94a3b8', '#6366f1', '#f59e0b', '#a855f7', '#10b981'], borderRadius: 6 }]
                 },
                 options: { responsive: true, plugins: { legend: { display: false } }, indexAxis: 'y' }
+            });
+
+            // Tier Doughnut Chart
+            new Chart(document.getElementById('tierChart'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Tier 1', 'Tier 2', 'Tier 3'],
+                    datasets: [{
+                        data: [15, 25, 45],
+                        backgroundColor: ['#2563eb', '#6366f1', '#94a3b8'],
+                        borderWidth: 0
+                    }]
+                },
+                options: { responsive: true, cutout: '70%', plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 10 } } } } }
+            });
+
+            // Whitespace Bar Chart
+            new Chart(document.getElementById('whitespaceChart'), {
+                type: 'bar',
+                data: {
+                    labels: ['Nexus AI', 'Analytics', 'Compliance'],
+                    datasets: [{
+                        label: 'Opp Value ($k)',
+                        data: [450, 280, 150],
+                        backgroundColor: '#3b82f6',
+                        borderRadius: 4
+                    }]
+                },
+                options: { responsive: true, indexAxis: 'y', plugins: { legend: { display: false } }, scales: { x: { display: false }, y: { grid: { display: false } } } }
             });
         }
 
@@ -334,7 +368,7 @@
             icon.classList.add('animate-spin');
             setTimeout(() => {
                 icon.classList.remove('animate-spin');
-                alert('Intelligence Refreshed: 6sense Buying Signals & Salesforce Pipeline Synced!');
+                alert('Intelligence Refreshed: 6sense Buying Signals, SFDC Pipeline & ZoomInfo Data Synced!');
             }, 1000);
         }
 
