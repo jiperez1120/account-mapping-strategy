@@ -12,24 +12,30 @@ Welcome to my interactive sales strategy and account mapping portfolio. This pro
 
 ### 🛠️ Strategic Modules
 
-#### 1. Account Whitespace Analysis
-A color-coded heatmap showing product penetration vs. opportunities. This layer allows a sales professional to:
+#### 1. Account Mapping & Intelligence Layer
+A comprehensive dashboard layer for territory and account strategy:
+- **Tier Distribution:** Visual representation of account segments (Tier 1 vs. Strategic).
+- **Whitespace Opportunity:** Product-specific revenue gaps identified through predictive analysis.
+- **Engagement Scoring:** Tracking decision-maker alignment and cross-departmental penetration.
+
+#### 2. Whitespace Heatmap Analysis
+A color-coded matrix showing product penetration vs. opportunities. This layer allows a sales professional to:
 - Identify "low-hanging fruit" for cross-sell.
 - Track in-progress pilot programs (Nexus AI).
 - Prioritize Gov & Compliance modules for high-risk accounts.
 
-#### 2. Pipeline Performance (Chart.js Integration)
+#### 3. Pipeline Performance (Chart.js Integration)
 Visualizing sales velocity and revenue forecast vs. quota. The dashboard includes dynamic bar charts for pipeline stages (Discovery to Closing) and line charts for quarterly forecasting.
 
-#### 3. QBR & Actionable Insights
+#### 4. QBR & Actionable Insights
 Next steps derived from the latest Quarterly Business Reviews for Top-Tier accounts like **Global Finance Corp** and **Stellar Automotive**. This ensures a clear path to closing and customer success.
 
-#### 4. CRM Integration Layer
-Simulated real-time synchronization with industry-standard tools:
+#### 5. CRM & Tool Integration Layer
+Simulated real-time synchronization with industry-standard enterprise tools:
 - **Salesforce** (Lead & Opportunity syncing)
-- **Gong** (Conversation Intelligence data)
-- **HubSpot** (Marketing attribution)
-- **Outreach/Salesloft** (Sequencing and activity tracking)
+- **6sense** (Predictive intent and account fit)
+- **ZoomInfo** (Contact intelligence and organizational hierarchy)
+- **Gong & Outreach** (Sales engagement and conversation intelligence)
 
 ---
 
